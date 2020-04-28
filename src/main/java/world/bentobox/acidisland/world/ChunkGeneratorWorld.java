@@ -27,8 +27,8 @@ public class ChunkGeneratorWorld extends ChunkGenerator {
 
     private final AcidIsland addon;
     private final Random rand = new Random();
-    private Map<Environment, Integer> seaHeight = new EnumMap<>(Environment.class);
-    private Map<Vector, Material> roofChunk = new HashMap<>();
+    private final Map<Environment, Integer> seaHeight = new EnumMap<>(Environment.class);
+    private final Map<Vector, Material> roofChunk = new HashMap<>();
 
     /**
      * @param addon - addon
@@ -46,7 +46,8 @@ public class ChunkGeneratorWorld extends ChunkGenerator {
         ChunkData result = createChunkData(world);
         int sh = seaHeight.getOrDefault(world.getEnvironment(), 0);
         if (sh > 0) {
-            result.setRegion(0, 0, 0, 16, sh + 1, 16, Material.WATER);
+            result.setRegion(0, 0, 0, 16, 5, 16, Material.COARSE_DIRT); // Indigo - Add dirt to bottom of world
+            result.setRegion(0, 5, 0, 16, sh + 1, 16, Material.WATER);
         }
         if (world.getEnvironment().equals(Environment.NETHER) && addon.getSettings().isNetherRoof()) {
             roofChunk.forEach((k,v) -> result.setBlock(k.getBlockX(), world.getMaxHeight() + k.getBlockY(), k.getBlockZ(), v));

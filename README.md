@@ -1,20 +1,10 @@
-AcidIsland
+Survival Island
 ==========
-[![Build Status](https://ci.codemc.org/buildStatus/icon?job=BentoBoxWorld/AcidIsland)](https://ci.codemc.org/job/BentoBoxWorld/job/AcidIsland/)
-[![Lines Of Code](https://sonarcloud.io/api/project_badges/measure?project=world.bentobox%3Aacidisland&metric=ncloc)](https://sonarcloud.io/component_measures?id=world.bentobox%3Aacidisland&metric=ncloc)
-[![Maintainability Rating](https://sonarcloud.io/api/project_badges/measure?project=world.bentobox%3Aacidisland&metric=sqale_rating)](https://sonarcloud.io/component_measures?id=world.bentobox%3Aacidisland&metric=Maintainability)
-[![Reliability Rating](https://sonarcloud.io/api/project_badges/measure?project=world.bentobox%3Aacidisland&metric=reliability_rating)](https://sonarcloud.io/component_measures?id=world.bentobox%3Aacidisland&metric=Reliability)
-[![Security Rating](https://sonarcloud.io/api/project_badges/measure?project=world.bentobox%3Aacidisland&metric=security_rating)](https://sonarcloud.io/component_measures?id=world.bentobox%3Aacidisland&metric=Security)
-[![Bugs](https://sonarcloud.io/api/project_badges/measure?project=world.bentobox%3Aacidisland&metric=bugs)](https://sonarcloud.io/project/issues?id=world.bentobox%3Aacidisland&resolved=false&types=BUG)
 
 # Introduction
-AcidIsland add-on for BentoBox, so to run AcidIsland, you must have BentoBox installed. It is not a Bukkit plugin and trying to use it as one will not work.
+SurvivalIsland is a fork of the AcidIsland add-on for BentoBox, so to run SurvivalIsland, you must have BentoBox installed. It is not a Bukkit plugin and trying to use it as one will not work.
 
-
-## The Story
-You're on an island, in a sea of acid! If you like Skyblock, try AcidIsland for a new challenge!
-
-This is a variation of SkyBlock. Instead of falling, you must contend with acid water when expanding your island and players can boat to each other's islands.
+The acid effects have been removed in favour of a border and more peaceful gameplay.
 
 ## Installation
 
@@ -29,7 +19,7 @@ This is a variation of SkyBlock. Instead of falling, you must contend with acid 
 
 ### Other Add-ons
 
-AcidIsland is an add-on that uses the BentoBox API. Here are some other ones that you may be interested in:
+SuirvivalIsland is an add-on that uses the BentoBox API. Here are some other ones that you may be interested in:
 
 * Level - provides island level calculation and a top ten
 * Welcome Warps - provides the warp sign feature
@@ -40,4 +30,6 @@ You can find the projects on GitHub.
 
 Bugs and Feature requests
 =========================
-File bug and feature requests here: https://github.com/BentoBoxWorld/AcidIsland/issues
+For bugs related to this fork you can deposit them here: https://github.com/TheMGRF/SurvivalIsland/issues
+
+For bugs relating to AcidIsland file them and feature requests here: https://github.com/BentoBoxWorld/AcidIsland/issues

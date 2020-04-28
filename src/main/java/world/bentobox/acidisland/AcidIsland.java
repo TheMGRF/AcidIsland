@@ -10,9 +10,7 @@ import org.eclipse.jdt.annotation.Nullable;
 
 import world.bentobox.acidisland.commands.AcidCommand;
 import world.bentobox.acidisland.commands.AiCommand;
-import world.bentobox.acidisland.listeners.AcidEffect;
 import world.bentobox.acidisland.listeners.LavaCheck;
-import world.bentobox.acidisland.world.AcidTask;
 import world.bentobox.acidisland.world.ChunkGeneratorWorld;
 import world.bentobox.bentobox.api.addons.GameModeAddon;
 import world.bentobox.bentobox.api.configuration.Config;
@@ -27,9 +25,8 @@ import world.bentobox.bentobox.lists.Flags;
 public class AcidIsland extends GameModeAddon {
 
     private @Nullable AISettings settings;
-    private @Nullable AcidTask acidTask;
     private @Nullable ChunkGenerator chunkGenerator;
-    private Config<AISettings> config = new Config<>(this, AISettings.class);
+    private final Config<AISettings> config = new Config<>(this, AISettings.class);
 
     private static final String NETHER = "_nether";
     private static final String THE_END = "_the_end";
@@ -53,9 +50,6 @@ public class AcidIsland extends GameModeAddon {
             // Woops
             this.logError("AcidIsland settings could not load! Addon disabled.");
             this.setState(State.DISABLED);
-            if (acidTask != null) {
-                acidTask.cancelTasks();
-            }
             return false;
         }
         return true;
@@ -72,17 +66,11 @@ public class AcidIsland extends GameModeAddon {
         if (endWorld != null) Flags.BOAT.setDefaultSetting(endWorld, true);
 
         // Register listeners
-        // Acid Effects
-        registerListener(new AcidEffect(this));
         registerListener(new LavaCheck(this));
-        // Burn everything
-        acidTask = new AcidTask(this);
     }
 
     @Override
-    public void onDisable() {
-        if (acidTask != null) acidTask.cancelTasks();
-    }
+    public void onDisable() {}
 
     @Nullable
     public AISettings getSettings() {

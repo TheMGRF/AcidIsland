@@ -6,7 +6,7 @@ acid:
   damage-chickens: false
   command:
     # Island Command. What command users will run to access their island
-    island: ai
+    island: is
     # The island admin command.
     admin: acid
   # Use control panel if it exists (ControlPanel addon must be in addons)

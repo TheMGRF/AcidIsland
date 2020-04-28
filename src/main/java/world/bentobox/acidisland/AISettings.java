@@ -34,15 +34,6 @@ public class AISettings implements WorldSettings {
 
     // ---------------------------------------------
 
-    /*      ACID        */
-    @ConfigComment("Acid can damage ops or not")
-    @ConfigEntry(path = "acid.damage-op")
-    private boolean acidDamageOp = false;
-
-    @ConfigComment("Acid can damage chickens - best to leave false because they like to swim")
-    @ConfigEntry(path = "acid.damage-chickens")
-    private boolean acidDamageChickens = false;
-
     // Command
     @ConfigComment("Island Command. What command users will run to access their island")
     @ConfigEntry(path = "acid.command.island")
@@ -56,89 +47,16 @@ public class AISettings implements WorldSettings {
     @ConfigEntry(path = "acid.use-control-panel", since = "1.13.0")
     private boolean useControlPanel = false;
 
-    // Damage
-    @ConfigComment("Damage that a player will experience in acid. 10 is half their health typically. 5 would be easier.")
-    @ConfigEntry(path = "acid.damage.acid.player")
-    private int acidDamage = 10;
-
-    @ConfigComment("Damage that monsters experience from acid. Some monsters have armor or natural armor so will take less damage.")
-    @ConfigEntry(path = "acid.damage.acid.monster")
-    private int acidDamageMonster = 5;
-
-    @ConfigComment("Damage animals experience from acid")
-    @ConfigEntry(path = "acid.damage.acid.animal")
-    private int acidDamageAnimal = 1;
-
-    @ConfigComment("Destroy items after this many seconds in acid. 0 = do not destroy items")
-    @ConfigEntry(path = "acid.damage.acid.item")
-    private long acidDestroyItemTime = 0;
-
-    @ConfigComment("Damage from acid rain (and snow, if toggled on).")
-    @ConfigEntry(path = "acid.damage.rain")
-    private int acidRainDamage = 1;
-
-    @ConfigComment("Damage from acid snow")
-    @ConfigEntry(path = "acid.damage.snow")
-    private boolean acidDamageSnow;
-
-    @ConfigComment("Delay before acid or acid rain starts burning")
-    @ConfigComment("This can give time for conduit power to kick in")
-    @ConfigEntry(path = "acid.damage.delay")
-    private long acidDamageDelay = 2;
-
-    @ConfigComment("Potion effects from going into acid water.")
-    @ConfigComment("You can list multiple effects.")
-    @ConfigComment("Available effects are:")
-    @ConfigComment("   BLINDNESS")
-    @ConfigComment("   CONFUSION")
-    @ConfigComment("   HUNGER")
-    @ConfigComment("   POISON")
-    @ConfigComment("   SLOW")
-    @ConfigComment("   SLOW_DIGGING")
-    @ConfigComment("   WEAKNESS")
-    @ConfigEntry(path = "acid.damage.effects")
-    @Adapter(PotionEffectListAdapter.class)
-    private List<PotionEffectType> acidEffects = new ArrayList<>();
-    @ConfigComment("Acid effect duration in seconds")
-    @ConfigEntry(path = "acid.damage.acid-effect-duration", since = "1.11.2")
-    private int acidEffectDuation = 30;
-
-    @ConfigComment("Potion effects from going into acid rain and snow.")
-    @ConfigComment("You can list multiple effects.")
-    @ConfigComment("Available effects are:")
-    @ConfigComment("   BLINDNESS")
-    @ConfigComment("   CONFUSION")
-    @ConfigComment("   HUNGER")
-    @ConfigComment("   POISON")
-    @ConfigComment("   SLOW")
-    @ConfigComment("   SLOW_DIGGING")
-    @ConfigComment("   WEAKNESS")
-    @ConfigEntry(path = "acid.damage.rain-effects", since = "1.9.1")
-    @Adapter(PotionEffectListAdapter.class)
-    private List<PotionEffectType> acidRainEffects = new ArrayList<>();
-
-    @ConfigComment("Rain effect duration in seconds")
-    @ConfigEntry(path = "acid.damage.rain-effect-duration", since = "1.11.2")
-    private int rainEffectDuation = 10;
-
-    @ConfigComment("If player wears a helmet then they will not suffer from acid rain")
-    @ConfigEntry(path = "acid.damage.protection.helmet")
-    private boolean helmetProtection;
-
-    @ConfigComment("If player wears any set of full armor, they will not suffer from acid damage")
-    @ConfigEntry(path = "acid.damage.protection.full-armor")
-    private boolean fullArmorProtection;
-
 
     /*      WORLD       */
     @ConfigComment("Friendly name for this world. Used in admin commands. Must be a single word")
     @ConfigEntry(path = "world.friendly-name", needsReset = true)
-    private String friendlyName = "AcidIsland";
+    private String friendlyName = "SurvivalIsland";
 
     @ConfigComment("Name of the world - if it does not exist then it will be generated.")
-    @ConfigComment("It acts like a prefix for nether and end (e.g. acidisland_world, acidisland_world_nether, acidisland_world_end)")
+    @ConfigComment("It acts like a prefix for nether and end (e.g. island_world, island_world_nether, island_world_end)")
     @ConfigEntry(path = "world.world-name", needsReset = true)
-    private String worldName = "acidisland_world";
+    private String worldName = "island_world";
 
     @ConfigComment("World difficulty setting - PEACEFUL, EASY, NORMAL, HARD")
     @ConfigComment("Other plugins may override this setting")
@@ -525,49 +443,6 @@ public class AISettings implements WorldSettings {
     @ConfigEntry(path = "do-not-edit-these-settings.reset-epoch")
     private long resetEpoch = 0;
 
-
-    /**
-     * @return the acidDamage
-     */
-    public int getAcidDamage() {
-        return acidDamage;
-    }
-    /**
-     * @return the acidDamageAnimal
-     */
-    public int getAcidDamageAnimal() {
-        return acidDamageAnimal;
-    }
-    /**
-     * @return the acidDamageDelay
-     */
-    public long getAcidDamageDelay() {
-        return acidDamageDelay;
-    }
-    /**
-     * @return the acidDamageMonster
-     */
-    public int getAcidDamageMonster() {
-        return acidDamageMonster;
-    }
-    /**
-     * @return the acidDestroyItemTime
-     */
-    public long getAcidDestroyItemTime() {
-        return acidDestroyItemTime;
-    }
-    /**
-     * @return the acidEffects
-     */
-    public List<PotionEffectType> getAcidEffects() {
-        return acidEffects;
-    }
-    /**
-     * @return the acidRainDamage
-     */
-    public int getAcidRainDamage() {
-        return acidRainDamage;
-    }
     /**
      * @return the command for accessing your admin command
      */
@@ -806,18 +681,6 @@ public class AISettings implements WorldSettings {
         return worldName;
     }
     /**
-     * @return the acidDamageChickens
-     */
-    public boolean isAcidDamageChickens() {
-        return acidDamageChickens;
-    }
-    /**
-     * @return the acidDamageOp
-     */
-    public boolean isAcidDamageOp() {
-        return acidDamageOp;
-    }
-    /**
      * @return the allowSetHomeInNether
      */
     @Override
@@ -857,18 +720,6 @@ public class AISettings implements WorldSettings {
     @Override
     public boolean isEndIslands() {
         return endIslands;
-    }
-    /**
-     * @return the fullArmorProtection
-     */
-    public boolean isFullArmorProtection() {
-        return fullArmorProtection;
-    }
-    /**
-     * @return the helmetProtection
-     */
-    public boolean isHelmetProtection() {
-        return helmetProtection;
     }
     /**
      * @return the kickedKeepInventory
@@ -1015,60 +866,6 @@ public class AISettings implements WorldSettings {
         return true;
     }
     /**
-     * @param acidDamage the acidDamage to set
-     */
-    public void setAcidDamage(int acidDamage) {
-        this.acidDamage = acidDamage;
-    }
-    /**
-     * @param acidDamageAnimal the acidDamageAnimal to set
-     */
-    public void setAcidDamageAnimal(int acidDamageAnimal) {
-        this.acidDamageAnimal = acidDamageAnimal;
-    }
-    /**
-     * @param acidDamageChickens the acidDamageChickens to set
-     */
-    public void setAcidDamageChickens(boolean acidDamageChickens) {
-        this.acidDamageChickens = acidDamageChickens;
-    }
-    /**
-     * @param acidDamageDelay the acidDamageDelay to set
-     */
-    public void setAcidDamageDelay(long acidDamageDelay) {
-        this.acidDamageDelay = acidDamageDelay;
-    }
-    /**
-     * @param acidDamageMonster the acidDamageMonster to set
-     */
-    public void setAcidDamageMonster(int acidDamageMonster) {
-        this.acidDamageMonster = acidDamageMonster;
-    }
-    /**
-     * @param acidDamageOp the acidDamageOp to set
-     */
-    public void setAcidDamageOp(boolean acidDamageOp) {
-        this.acidDamageOp = acidDamageOp;
-    }
-    /**
-     * @param acidDestroyItemTime the acidDestroyItemTime to set
-     */
-    public void setAcidDestroyItemTime(long acidDestroyItemTime) {
-        this.acidDestroyItemTime = acidDestroyItemTime;
-    }
-    /**
-     * @param acidEffects the acidEffects to set
-     */
-    public void setAcidEffects(List<PotionEffectType> acidEffects) {
-        this.acidEffects = acidEffects;
-    }
-    /**
-     * @param acidRainDamage the acidRainDamage to set
-     */
-    public void setAcidRainDamage(int acidRainDamage) {
-        this.acidRainDamage = acidRainDamage;
-    }
-    /**
      * @param adminCommand what you want your admin command to be
      */
     public void setAdminCommand(String adminCommand) { this.adminCommand = adminCommand; }
@@ -1164,24 +961,12 @@ public class AISettings implements WorldSettings {
         this.friendlyName = friendlyName;
     }
     /**
-     * @param fullArmorProtection the fullArmorProtection to set
-     */
-    public void setFullArmorProtection(boolean fullArmorProtection) {
-        this.fullArmorProtection = fullArmorProtection;
-    }
-    /**
      * @param geoLimitSettings the geoLimitSettings to set
      */
     public void setGeoLimitSettings(List<String> geoLimitSettings) {
         this.geoLimitSettings = geoLimitSettings;
     }
 
-    /**
-     * @param helmetProtection the helmetProtection to set
-     */
-    public void setHelmetProtection(boolean helmetProtection) {
-        this.helmetProtection = helmetProtection;
-    }
     /**
      * @param islandCommand what you want your island command to be
      */
@@ -1426,18 +1211,6 @@ public class AISettings implements WorldSettings {
         this.worldName = worldName;
     }
     /**
-     * @return the acidDamageSnow
-     */
-    public boolean isAcidDamageSnow() {
-        return acidDamageSnow;
-    }
-    /**
-     * @param acidDamageSnow the acidDamageSnow to set
-     */
-    public void setAcidDamageSnow(boolean acidDamageSnow) {
-        this.acidDamageSnow = acidDamageSnow;
-    }
-    /**
      * @return the deathsResetOnNewIsland
      */
     @Override
@@ -1596,47 +1369,6 @@ public class AISettings implements WorldSettings {
         this.pasteMissingIslands = pasteMissingIslands;
     }
 
-    /**
-     * Get acid rain potion effects
-     * @return liust of potion effects
-     * @since 1.9.1
-     */
-    public List<PotionEffectType> getAcidRainEffects() {
-        return acidRainEffects;
-    }
-
-    /**
-     *
-     * @param acidRainEffects
-     * @since 1.9.1
-     */
-    public void setAcidRainEffects(List<PotionEffectType> acidRainEffects) {
-        this.acidRainEffects = acidRainEffects;
-    }
-    /**
-     * @return the rainEffectDuation
-     */
-    public int getRainEffectDuation() {
-        return rainEffectDuation;
-    }
-    /**
-     * @param rainEffectDuation the rainEffectDuation to set
-     */
-    public void setRainEffectDuation(int rainEffectDuation) {
-        this.rainEffectDuation = rainEffectDuation;
-    }
-    /**
-     * @return the acidEffectDuation
-     */
-    public int getAcidEffectDuation() {
-        return acidEffectDuation;
-    }
-    /**
-     * @param acidEffectDuation the acidEffectDuation to set
-     */
-    public void setAcidEffectDuation(int acidEffectDuation) {
-        this.acidEffectDuation = acidEffectDuation;
-    }
     /**
      * @return the spawnLimitMonsters
      */
